@@ -66,6 +66,18 @@ def list_prof(list_type):
                            list_type=list_type)
 
 
+@app.route('/distribution')
+def distribution():
+    ll = ["Ридли Скот",
+          "Энди Уир",
+          "Марк Уотни",
+          "Шон Бин",
+          ]
+    return render_template("distr.html",
+                           title="Размещение по каютам",
+                           list_prof=ll,
+                           list_type='ol')
+
 
 @app.route('/countdown')
 def countdown():
