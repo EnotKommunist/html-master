@@ -79,6 +79,29 @@ def distribution():
                            list_type='ol')
 
 
+@app.route('/table/<male>/<year>')
+def table(male, year):
+    name = ''
+    col = ''
+    if male == 'male' and int(year) <= 21:
+        name = url_for("static", filename="img/little.png")
+        col = url_for("static", filename='img/red-lit.png')
+    elif male == 'male' and int(year) > 21:
+        name = url_for("static", filename="img/big.png")
+        col = url_for("static", filename='img/red.png')
+    elif male == 'female' and int(year) <= 21:
+        name = url_for("static", filename="img/little.png")
+        col = url_for("static", filename='img/blue-lit.png')
+    elif male == 'female' and int(year) > 21:
+        name = url_for("static", filename="img/big.png")
+        col = url_for("static", filename='img/blue.png')
+    return render_template("table.html",
+                           title="Оформление каюты",
+                           image=name,
+                           color=col)
+
+
+
 @app.route('/countdown')
 def countdown():
     countdown_list = [str(x) for x in range(10, 0, -1)]
